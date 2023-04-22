@@ -5,7 +5,21 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #282c34;
-    color: #fff;
+
     min-height: 100vh;
+  }
+
+  span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 800ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  @keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
   }

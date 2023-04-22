@@ -1,5 +1,5 @@
 const express = require("express");
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 require("dotenv").config()
@@ -13,13 +13,13 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 // Create a MySQL connection pool
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "0000",
-  database: "project",
-});
+// const pool = mysql.createPool({
+//   connectionLimit: 10,
+//   host: "localhost",
+//   user: "root",
+//   password: "0000",
+//   database: "project",
+// });
 
 
 
