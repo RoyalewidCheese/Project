@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #navbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #000000;
+        color: #fff;
+        border-bottom: 5px solid #555;
+        height: 100px;
+        padding: 0 20px;
+      }
+
+      .left-panel {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 700px;
+        border-right: 5px solid #555;
+        width: 200px;
+        background-color: #000000;
+      }
+
+      .left-panel ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .left-panel li {
+        padding: 30px;
+      }
+      .left-panel li.Dashboard {
+        background-color: rgb(255, 255, 255);
+        color: white;
+      }
+
+      .left-panel li.Dashboard a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #000000;
+      }
+      .left-panel li a {
+        text-decoration: none;
+        font-size: 20px;
+        color: #ffffff;
+      }
+
+      .left-panel li:hover {
+        background-color: #ccc;
+      }
+
+      .left-panel li:not(.Dashboard):hover {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .left-panel li.active {
+        background-color: #ddd;
+      }
+
+      #navbar h1 {
+        margin: 0;
+      }
+
+      #navbar ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      #navbar ul li {
+        list-style: none;
+      }
+
+      #navbar ul li a {
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 16px 40px;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      #navbar ul li a:hover {
+        background-color: #555;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        min-width: 160px;
+        background-color: #191818;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        left: 50%; /* add this to center the dropdown */
+        transform: translateX(-50%);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h1>Welcome to Dashboard <%= title %></h1>
+      <ul>
+        <li class="dropdown">
+          <a href="#">Profile</a>
+          <div class="dropdown-content">
+            <a href="Profile.html">User </a>
+            <a href="login.html" onclick="logout()">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="left-panel">
+      <ul>
+        <li class="Dashboard">
+          <a href="dashboard.html"><b>Dashboard</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Transactions</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Items</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Borrow/Lend</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Inventory</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Users</b></a>
+        </li>
+        <li>
+          <a href="#"><b>Audit Log</b></a>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      function logout() {
+        localStorage.clear();
+        window.location = "login.html";
+      }
+      // const token = localStorage.getItem("token");
+      // if (!token) {
+      //   window.location.href = "login.html";
+      // }
+    </script>
+  </body>
+</html>

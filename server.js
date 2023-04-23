@@ -1,46 +1,47 @@
 const express = require("express");
-const mysql = require("mysql2");
-const bodyParser = require("body-parser");
+// const mysql = require("mysql2");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
-const path = require("path");
+require("dotenv").config()
 
 const app = express();
 
-// Parse JSON request bodies
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/public'));
 
 // Create a MySQL connection pool
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "0000",
-  database: "project",
-});
+// const pool = mysql.createPool({
+//   connectionLimit: 10,
+//   host: "localhost",
+//   user: "root",
+//   password: "0000",
+//   database: "project",
+// });
 
-// Serve static files in the public directory
-app.use(express.static("public"));
+
 
 // Set up session management
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.COOKIE_SECURE === "true" },
+    saveUninitialized: true
   })
 );
+
 
 // Middleware function to check if user is authenticated
 const requireAuth = (req, res, next) => {
   if (!req.session.userId) {
-    // Redirect to login page if not authenticated
     res.redirect("/login.html");
     return;
   }
   next();
 };
+
 
 // Handle the login request on a POST request to the /login endpoint
 app.post("/login", (req, res) => {
@@ -63,22 +64,27 @@ app.post("/login", (req, res) => {
   }
 });
 
-// Serve the login page on a GET request to the /login endpoint
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
+
 
 // Handle logout requests
 app.get("/logout", (req, res) => {
-  // Clear user ID from session and redirect to login page
   req.session.userId = undefined;
   res.redirect("/login.html");
 });
 
-// Handle requests for main page
-app.get("/dashboard.html", requireAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
-});
+app.get("/dashboard.html",requireAuth,(req,res)=>{
+  res.render('dashboard', { title: 'Jithu' });
+})
+
+const _getlogin=(req,res)=>{
+  if(!req.session.userId)
+      res.render('login');
+  else res.redirect('dashboard.html')
+}
+
+app.get("/",_getlogin)
+app.get("/login",_getlogin)
+app.get("/login.html",_getlogin)
 
 // Start server
 const port = process.env.PORT || 3000;
