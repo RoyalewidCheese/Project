@@ -7,7 +7,7 @@ var table_room =  $('.table_room').DataTable({
                 },
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_room"
@@ -78,7 +78,7 @@ var table_room =  $('.table_room').DataTable({
 var table_member =  $('.table_member').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_member"
@@ -190,7 +190,7 @@ var table_member =  $('.table_member').DataTable({
 var table_user =  $('.table_user').DataTable({
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_user"
@@ -275,7 +275,7 @@ var table_user =  $('.table_user').DataTable({
 var table_equipment = $('.table_equipment').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment"
@@ -438,7 +438,7 @@ var table_equipment = $('.table_equipment').DataTable({
 var table_inventory_new = $('.table_inventory_new').DataTable({
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment_new"
@@ -517,7 +517,7 @@ var table_inventory_new = $('.table_inventory_new').DataTable({
 var table_inventory_old = $('.table_inventory_old').DataTable({
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment_old"
@@ -595,7 +595,7 @@ var table_inventory_old = $('.table_inventory_old').DataTable({
 var table_inventory_lost = $('.table_inventory_lost').DataTable({
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment_lost"
@@ -673,7 +673,7 @@ var table_inventory_lost = $('.table_inventory_lost').DataTable({
 var table_inventory_damaged = $('.table_inventory_damaged').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment_damaged"
@@ -751,7 +751,7 @@ var table_inventory_damaged = $('.table_inventory_damaged').DataTable({
 var table_inventory_pulledout = $('.table_inventory_pulledout').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_equipment_pulled"
@@ -831,7 +831,7 @@ var table_inventory_pulledout = $('.table_inventory_pulledout').DataTable({
 var table_inventory_all = $('.table_inventory_all').DataTable({
 							"ajax":
 							{
-								"url": "../class/display/display",
+								"url": "/display",
 								"type": "POST",
 								"data": {
 									"key": "display_equipment_all"
@@ -907,7 +907,7 @@ function room_info(a,b){
 	var table_roominfo = $('.table_roominfo').DataTable({
 							"ajax":
 								{
-									"url": "../class/display/display",
+									"url": "/display",
 									"type": "POST",
 									"data": {
 										"key": "display_roominfo",
@@ -1063,7 +1063,7 @@ function room_info(a,b){
 var tbl_newtransaction = $('.tbl_newtransaction').DataTable({
 		"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_newtransaction"
@@ -1101,7 +1101,7 @@ var tbl_newtransaction = $('.tbl_newtransaction').DataTable({
 var tbl_borrow = $('.tbl_borrow').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": {
 				"key": "display_borrow"
@@ -1190,7 +1190,7 @@ function selectYearData()
 var tbl_return = $('.tbl_return').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": function(d){
 		        d.key = "display_return";
@@ -1271,7 +1271,7 @@ $("#btnReloadList").on('click', function(){
 var tbl_pendingres = $('.tbl_pendingres').DataTable({
 		"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "pending_reservation"
@@ -1350,7 +1350,7 @@ var tbl_pendingres = $('.tbl_pendingres').DataTable({
 var tbl_reserved = $('.tbl_reserved').DataTable({
 		"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "accept_reservation"
@@ -1429,7 +1429,7 @@ var tbl_reserved = $('.tbl_reserved').DataTable({
 var tbluser_reservation = $('.tbluser_reservation').DataTable({
 		"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "tbluser_reservation",
@@ -1509,7 +1509,7 @@ var tbluser_reservation = $('.tbluser_reservation').DataTable({
 var table_history = $('.table_history').DataTable({
 		"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "table_history",
@@ -1580,7 +1580,7 @@ var table_history = $('.table_history').DataTable({
 var table_dashboard = $('.table_dashboard').DataTable({
 	"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "table_dashboard",
@@ -1667,7 +1667,7 @@ function member_profile(id)
 	var tbl_member_profile = $('.tbl_member_profile').DataTable({
 		"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "tbl_member_profile",
@@ -1745,7 +1745,7 @@ function member_profile(id)
 var tbluser_inbox = $('.tbluser_inbox').DataTable({
 	"ajax":
 			{
-				"url": "../class/display/display",
+				"url": "/display",
 				"type": "POST",
 				"data": {
 					"key": "tbluser_inbox",
@@ -1827,7 +1827,7 @@ function selectYearTransferData()
 var table_inventory_transfer = $('.table_inventory_transfer').DataTable({
 	"ajax":
 		{
-			"url": "../class/display/display",
+			"url": "/display",
 			"type": "POST",
 			"data": function(d){
 		        d.key = "display_inventory_transfer";
@@ -1928,7 +1928,7 @@ $("#btnReloadTransferredList").on('click', function(){
 // {
 // 	$.ajax({
 // 		type: "POST",
-// 		url: "../class/display/display",
+// 		url: "/display",
 // 		data: {
 // 			key: "tbl_member_profile",
 // 			id: id

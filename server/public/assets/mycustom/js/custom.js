@@ -83,7 +83,7 @@ $('.faculty-div').click(function(){
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "display_roomtype"
     }
@@ -108,7 +108,7 @@ $.ajax({
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "display_item_borrow",
         }
@@ -146,7 +146,7 @@ $.ajax({
 //borrow transaction
 $.ajax({
  type: "POST",
- url: "../class/display/display",
+ url: "/display",
  data: {
         key: "display_memberselect"
      }
@@ -166,7 +166,7 @@ $.ajax({
  function equipment_info(id){
     $.ajax({
         type: "POST",
-        url: "../class/display/display",
+        url: "/display",
         data: {
             key: "display_equipmentinfo",
             id: id
@@ -212,7 +212,7 @@ $('body').on('click', '.equipment-forminfo .cancel-equipmentinfo', function(e){
 
 $.ajax({
  type: "POST",
- url: "../class/display/display",
+ url: "/display",
  data: {
         key: "count_pendingres"
      }
@@ -224,7 +224,7 @@ $.ajax({
 
 $.ajax({
  type: "POST",
- url: "../class/display/display",
+ url: "/display",
  data: {
         key: "count_acceptres"
      }
@@ -236,7 +236,7 @@ $.ajax({
 
 $.ajax({
  type: "POST",
- url: "../class/display/display",
+ url: "/display",
  data: {
         key: "count_cancelres"
      }
@@ -248,7 +248,7 @@ $.ajax({
 
 $.ajax({
  type: "POST",
- url: "../class/display/display",
+ url: "/display",
  data: {
         key: "count_client"
      }
@@ -261,7 +261,7 @@ $.ajax({
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "dashboard_history"
     }
@@ -286,7 +286,7 @@ $.ajax({
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "display_room_reserve"
     }
@@ -305,7 +305,7 @@ $.ajax({
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "display_rooms"
     }
@@ -329,7 +329,7 @@ $('.cancel-transfer').click(function(){
 
 $.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "count_reservation"
     }
@@ -342,7 +342,7 @@ $.ajax({
 $(document).ready( function(){
     $.ajax({
         type: "POST",
-        url: "../class/display/display",
+        url: "/display",
         data: {
             key: "count_due_borrow"
         }
@@ -355,7 +355,7 @@ $(document).ready( function(){
 
 // $.ajax({
 //     type: "POST",
-//     url: "../class/display/display",
+//     url: "/display",
 //     data: {
 //         key: "display_equipment_all",
 //     }

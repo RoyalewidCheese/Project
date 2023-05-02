@@ -1,12 +1,24 @@
 const express = require("express");
-// const mysql = require("mysql2");
-const session = require("express-session");
+const mysql = require("mysql2");
 const bcrypt = require("bcrypt");
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const verifyToken = require("./Security");
 
 require("dotenv").config()
+
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: process.env.MYSQL_PASSWORD,
+  database: 'lms19',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+
 
 const app = express();
 
@@ -17,61 +29,6 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
-
-
-// const pool = mysql.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'mysqlpass',
-//   database: 'labstock',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0
-// });
-
-
-
-
-async function getUsers() {
-  let connection;
-  try {
-    // get a connection from the pool
-    connection = await pool.getConnection();
-
-    // execute the query
-    const [rows, fields] = await connection.execute('SELECT * FROM users');
-
-    // log the results
-    console.log(rows);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    // release the connection back to the pool
-    if (connection) {
-      connection.release();
-    }
-  }
-}
-
-
-// Set up session management
-app.use(
-  session({
-    secret: process.env.SESSION,
-    resave: false,
-    saveUninitialized: true
-  })
-);
-
-
-// Middleware function to check if user is authenticated
-const requireAuth = (req, res, next) => {
-  if (!req.session.userId) {
-    res.redirect("/login.html");
-    return;
-  }
-  next();
-};
 
 
 // Handle the login request on a POST request to the /login endpoint
@@ -105,24 +62,49 @@ app.get('/items',(req,res)=>{
 
 
 // Handle logout requests
-app.get("/logout", (req, res) => {
+app.get("/logout.html|logout/", (req, res) => {
   req.session.userId = undefined;
   res.redirect("/login.html");
 });
 
-app.get("/dashboard.html",verifyToken,(req,res)=>{
+app.get(/dashboard.html|dashboard/,verifyToken,(req,res)=>{
   res.render('dashboard', { isAdmin: req.isAdmin });
 })
 
 const _getlogin=(req,res)=>{
-  if(!req.session.userId)
+  if(!req.username)
       res.render('login');
   else res.redirect('dashboard.html')
 }
 
-app.get("/",_getlogin)
-app.get("/login",_getlogin)
-app.get("/login.html",_getlogin)
+app.get(/login|login.html/,verifyToken,_getlogin)
+
+
+
+
+
+
+app.post('/display',async (req,res)=>{
+
+    var sql = 'select sum(item_rawstock) as item_rawstock,i_category from item group by i_category';
+
+    pool.getConnection(function(err, conn) {
+      conn.query(sql,(err,result)=>{
+        const val=[]
+        for(let i=0;i<result.length;i++){
+          val.push({'country':result[i]["i_category"],'litres':result[i]["item_rawstock"]})
+        }
+        res.json(val)
+      })
+     
+      pool.releaseConnection(conn);
+   })
+
+   console.log("--------------------------")
+   console.log(req.body.key)
+
+   
+  })
 
 // Start server
 const port = process.env.PORT || 3000;

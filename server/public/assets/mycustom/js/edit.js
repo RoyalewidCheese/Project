@@ -123,7 +123,7 @@ table_equipment.on('click', 'a.equip_moveroom', function(e){
 
 	$.ajax({
     type: "POST",
-    url: "../class/display/display",
+    url: "/display",
     data: {
         key: "display_roomtype1",
         id: id
@@ -334,7 +334,7 @@ $('.item-change').click(function(){
 
    	$.ajax({
    		type: "POST",
-   		url: "../class/display/display",
+   		url: "/display",
    		data: {
    			key: 'view_equipment',
    			id: id

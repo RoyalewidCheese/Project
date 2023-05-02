@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 function verifyToken(req, res, next) {
     const token = req.cookies.token;
     if (!token) {
-      return res.status(401).send('Unauthorized');
+        res.render('login');
+        return 
     }
-  
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.password = decoded.username;
